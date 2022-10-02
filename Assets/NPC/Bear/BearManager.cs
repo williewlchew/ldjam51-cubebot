@@ -25,7 +25,7 @@ public class BearManager : MonoBehaviour
            
         }
         if (currentPhase == 2){
-            if(AtCurrentGoal(patrolPoints2[currentPatrol2Point])){
+            if(AtCurrentGoal(patrolPoints2[currentPatrol2Point].position)){
                 // wait
                 currentPatrol2Point += 1;
                 if(currentPatrol2Point == patrolPoints2.Length && !attacking){
@@ -40,6 +40,8 @@ public class BearManager : MonoBehaviour
         }
     }
 
+    /* Phase control */
+
     void OnEnable()
     {
         GameManagerMain.DimensionOne += ChangeBearPhase1;
@@ -53,7 +55,6 @@ public class BearManager : MonoBehaviour
         GameManagerMain.DimensionThree -= ChangeBearPhase3;
     }
 
-    /*  */
     void ChangeBearPhase1()
     {
        _npcInterface.ChangeColor(1);
@@ -71,21 +72,33 @@ public class BearManager : MonoBehaviour
 
     void ChangeBearPhase3()
     {
-        _npcInterface.ChangeColor(2);
+        _npcInterface.ChangeColor(3);
 
         currentPhase = 3;
     }
 
-    /* Navagation */
-    private void NextParolPoint()
+    /* Attack */
+    public void Attack(Vector3 target)
     {
-        
+        StartCoroutine(AttackRoutine(target));
     }
 
-    private bool AtCurrentGoal(Transform goal)
+    IEnumerator AttackRoutine(Vector3 target)
     {
-        float dist = Vector3.Distance(goal.position, transform.position);
-        if(dist < 1.0f)
+        while (!AtCurrentGoal(target)) {
+            transform.position = Vector3.MoveTowards(transform.position, target, 10 * Time.deltaTime);
+            yield return null;
+        }
+        attacking = false;
+    }
+
+
+    /* Navagation */
+
+    private bool AtCurrentGoal(Vector3 goal)
+    {
+        float dist = Vector3.Distance(goal, transform.position);
+        if(dist < 1f)
         {
             return true;
         }

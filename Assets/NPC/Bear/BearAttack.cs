@@ -5,10 +5,16 @@ using UnityEngine;
 public class BearAttack : MonoBehaviour
 {
     public BearManager _bearManager;
+    public float attackWait = 1f;
+    private bool inProximity = false;
 
     void OnTriggerStay(Collider other)
     {
-        _bearManager.attacking = true;
+        if(other.gameObject.tag == "Player"){
+            inProximity = true;
+            _bearManager.attacking = true;
+            StartCoroutine(AttackRoutine(other.gameObject.transform.position, attackWait));
+        }
         // update visuals for angry
         // wait
         // charge
@@ -16,6 +22,15 @@ public class BearAttack : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
+        inProximity = false;
         _bearManager.attacking = false;
+    }
+
+    IEnumerator AttackRoutine(Vector3 target, float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        if (inProximity == true){
+            _bearManager.Attack(target);
+        }
     }
 }
