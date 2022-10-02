@@ -8,14 +8,28 @@ public class BridgeManager : MonoBehaviour
 
     void OnEnable ()
     {
-        PhaseTrigger.ChangePhase += ChangeBridgePhase;
+        PhaseTrigger.ChangePhase1 += ChangeBridgePhase1;
+        PhaseTrigger.ChangePhase2 += ChangeBridgePhase2;
+        PhaseTrigger.ChangePhase3 += ChangeBridgePhase3;
     }
     void OnDisable ()
     {
-        PhaseTrigger.ChangePhase -= ChangeBridgePhase;
+        PhaseTrigger.ChangePhase1 -= ChangeBridgePhase1;
     }
 
-    void ChangeBridgePhase()
+    void ChangeBridgePhase1()
+    {
+        _obstacleInterface.ChangeSpriteColor();
+        _obstacleInterface.UnObstruct();
+    }
+
+    void ChangeBridgePhase2()
+    {
+        _obstacleInterface.ChangeSpriteColor();
+        _obstacleInterface.UnObstruct();
+    }
+
+    void ChangeBridgePhase3()
     {
         _obstacleInterface.ChangeSpriteColor();
         _obstacleInterface.UnObstruct();

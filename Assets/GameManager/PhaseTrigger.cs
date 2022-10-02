@@ -5,11 +5,19 @@ using UnityEngine;
 public class PhaseTrigger: MonoBehaviour
 {
     public delegate void PhaseChangeEvent ();
-    public static event PhaseChangeEvent ChangePhase;
+    public static event PhaseChangeEvent ChangePhase1;
+    public static event PhaseChangeEvent ChangePhase2;
+    public static event PhaseChangeEvent ChangePhase3;
 
-    // Start is called before the first frame update
+
+    // temp
     void OnEnable()
     {
-        ChangePhase();
+        ChangePhase1();
+    }
+
+    public void ChangePhase(int phase)
+    {
+        
     }
 }
