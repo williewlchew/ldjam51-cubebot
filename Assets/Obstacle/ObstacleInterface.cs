@@ -32,7 +32,7 @@ public class ObstacleInterface : MonoBehaviour
 
     public void ChangeSpriteColor()
     {
-        lerpedColor = Color.Lerp(Color.white, Color.black, Time.time * 1.5f);
+        lerpedColor = Color.Lerp(Color.white, Color.black, Time.time * 0.5f);
         _spriteRenderer.color = lerpedColor;
     }
 }
