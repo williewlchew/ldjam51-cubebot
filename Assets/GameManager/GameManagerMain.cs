@@ -103,6 +103,7 @@ public class GameManagerMain : MonoBehaviour
     private void DimensionSwitch()
     {
         SlowFlag = false;
+        audio.pitch = 1f;
         HourGlassRemaining--;
         if (HourGlassRemaining < 0) {
             gameOver.SetActive(true);
