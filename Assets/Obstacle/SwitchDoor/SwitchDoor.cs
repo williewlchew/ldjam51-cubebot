@@ -10,9 +10,11 @@ public class SwitchDoor : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        switchActive = !(switchActive);
-        doorObject.SetActive(!switchActive);
-        _spriteRenderer.flipX = switchActive;
+        if(other.gameObject.tag == "Player"){
+            switchActive = !(switchActive);
+            doorObject.SetActive(!switchActive);
+            _spriteRenderer.flipX = switchActive;
+        }
     }
 
 }
