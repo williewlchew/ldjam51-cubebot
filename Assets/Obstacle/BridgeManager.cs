@@ -8,13 +8,13 @@ public class BridgeManager : MonoBehaviour
 
     void OnEnable ()
     {
-        PhaseTrigger.ChangePhase1 += ChangeBridgePhase1;
-        PhaseTrigger.ChangePhase2 += ChangeBridgePhase2;
-        PhaseTrigger.ChangePhase3 += ChangeBridgePhase3;
+        GameManagerMain.DimensionOne += ChangeBridgePhase1;
+        GameManagerMain.DimensionTwo += ChangeBridgePhase2;
+        GameManagerMain.DimensionThree += ChangeBridgePhase3;
     }
     void OnDisable ()
     {
-        PhaseTrigger.ChangePhase1 -= ChangeBridgePhase1;
+        GameManagerMain.DimensionOne -= ChangeBridgePhase1;
     }
 
     void ChangeBridgePhase1()

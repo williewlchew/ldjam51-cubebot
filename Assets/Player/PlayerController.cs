@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour
 
     private void AnimateWithInput()
     {
-        Debug.Log(animator.GetInteger("WalkDirection"));
         if (normalizedInputs.z > 0.5){
             animator.SetInteger("WalkDirection", 1);
         }
