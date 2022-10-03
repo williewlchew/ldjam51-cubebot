@@ -8,7 +8,7 @@ public class BearAttack : MonoBehaviour
     public float attackWait = 1f;
     private bool inProximity = false;
 
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player"){
             inProximity = true;

@@ -19,7 +19,7 @@ public class BearManager : MonoBehaviour
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         _animator.SetInteger("CurrentAnimation", 0);
-        
+
         // nav
         agent.isStopped = true;
     }
@@ -52,6 +52,7 @@ public class BearManager : MonoBehaviour
         // go back to sleeping spot
         if (currentPhase == 3){
            agent.destination = patrolPoints2[0].position;
+           agent.isStopped = attacking;
            if(AtCurrentGoal(patrolPoints2[0].position)){
                 // visual
                 _animator.SetInteger("CurrentAnimation", 0);
