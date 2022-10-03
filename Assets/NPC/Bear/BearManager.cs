@@ -11,15 +11,13 @@ public class BearManager : MonoBehaviour
 
     public bool attacking;
 
-    // temp
-    public int currentPhase;
+    public int currentPhase = 0;
     private int currentPatrol2Point;
     private UnityEngine.AI.NavMeshAgent agent;
 
     void Start() 
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        ChangeBearPhase1(); // temp
     }
 
     void Update () 
