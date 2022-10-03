@@ -1500,6 +1500,10 @@ MonoBehaviour:
   UIKey2: {fileID: 309881542}
   UIKey3: {fileID: 1932482467}
   UIGlassesLeft: {fileID: 217958117}
+  audio: {fileID: 0}
+  MusicChaCha: {fileID: 8300000, guid: 657f92484c57c284ea3662c67939d705, type: 3}
+  MusicBNova: {fileID: 8300000, guid: 32500050f54525a4eb27775e164a14ea, type: 3}
+  MusicDoom: {fileID: 8300000, guid: fcf2a7b613343aa41bbbb9aca6eaba6e, type: 3}
 --- !u!1 &911575862
 GameObject:
   m_ObjectHideFlags: 0

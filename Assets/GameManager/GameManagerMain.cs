@@ -29,6 +29,11 @@ public class GameManagerMain : MonoBehaviour
     private int CurrentDimension;
     private bool SlowFlag;
     private int KeysAcquired;
+    public AudioSource audio;
+    public AudioClip MusicChaCha;
+    public AudioClip MusicBNova;
+    public AudioClip MusicDoom;
+
 
     void OnEnable()
     {
@@ -109,14 +114,20 @@ public class GameManagerMain : MonoBehaviour
                 UIDim1.SetActive(true);
                 UIDim2.SetActive(false);
                 UIDim3.SetActive(false);
+                audio.clip = MusicChaCha;
+                audio.Play();
             } else if (CurrentDimension == 2) {
                 UIDim1.SetActive(false);
                 UIDim2.SetActive(true);
                 UIDim3.SetActive(false);
+                audio.clip = MusicBNova;
+                audio.Play();
             } else {
                 UIDim1.SetActive(false);
                 UIDim2.SetActive(false);
                 UIDim3.SetActive(true);
+                audio.clip = MusicDoom;
+                audio.Play();
             }
         }
     }
