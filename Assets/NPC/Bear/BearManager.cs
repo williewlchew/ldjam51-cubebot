@@ -13,7 +13,7 @@ public class BearManager : MonoBehaviour
 
     public int currentPhase = 0;
     private int currentPatrol2Point;
-    private UnityEngine.AI.NavMeshAgent agent;
+    public UnityEngine.AI.NavMeshAgent agent;
 
     void Start() 
     {
@@ -28,7 +28,7 @@ public class BearManager : MonoBehaviour
     { 
         // sleep
         if (currentPhase == 1){
-
+            _animator.SetInteger("CurrentAnimation", 10);
         }
 
         // patrol around
@@ -41,10 +41,10 @@ public class BearManager : MonoBehaviour
                 }
             }
             agent.destination = patrolPoints2[currentPatrol2Point].position;
-            agent.isStopped = attacking;
 
             // visual
             if(!attacking){
+                agent.isStopped = false;
                 AnimateMovement(patrolPoints2[currentPatrol2Point].position);
             }
         }
@@ -52,17 +52,13 @@ public class BearManager : MonoBehaviour
         // go back to sleeping spot
         if (currentPhase == 3){
            agent.destination = patrolPoints2[0].position;
-           agent.isStopped = attacking;
            if(AtCurrentGoal(patrolPoints2[0].position)){
                 // visual
                 _animator.SetInteger("CurrentAnimation", 0);
            }
            else if(!attacking){
+                agent.isStopped = false;
                 AnimateMovement(patrolPoints2[0].position);
-           }
-
-           if(attacking){
-                _animator.SetInteger("CurrentAnimation", 20);
            }
         }
     }
@@ -120,6 +116,9 @@ public class BearManager : MonoBehaviour
 
     void ChangeBearPhase3()
     {
+        // nav
+        agent.isStopped = false;
+
         // visual
         _npcInterface.ChangeColor(3);
 
@@ -132,6 +131,8 @@ public class BearManager : MonoBehaviour
     {
         _animator.SetInteger("CurrentAnimation", 21);
         StartCoroutine(AttackRoutine(target));
+        attacking = false;
+        agent.isStopped = false;
         _animator.SetInteger("CurrentAnimation", 0);
     }
 
@@ -141,7 +142,6 @@ public class BearManager : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target, 10 * Time.deltaTime);
             yield return null;
         }
-        attacking = false;
     }
 
 
@@ -150,7 +150,7 @@ public class BearManager : MonoBehaviour
     private bool AtCurrentGoal(Vector3 goal)
     {
         float dist = Vector3.Distance(goal, transform.position);
-        if(dist < 1f)
+        if(dist < 2f)
         {
             return true;
         }

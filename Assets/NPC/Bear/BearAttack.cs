@@ -13,6 +13,7 @@ public class BearAttack : MonoBehaviour
         if(other.gameObject.tag == "Player"){
             inProximity = true;
             _bearManager.attacking = true;
+            _bearManager.agent.isStopped = true;
             StartCoroutine(AttackRoutine(other.gameObject.transform.position, attackWait));
             _bearManager._animator.SetInteger("CurrentAnimation", 20);
         }
@@ -20,9 +21,12 @@ public class BearAttack : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        inProximity = false;
-        _bearManager.attacking = false;
-        _bearManager._animator.SetInteger("CurrentAnimation", 0);
+        if(other.gameObject.tag == "Player"){
+            inProximity = false;
+            _bearManager.attacking = false;
+            _bearManager.agent.isStopped = false;
+            _bearManager._animator.SetInteger("CurrentAnimation", 0);
+        }
     }
 
     IEnumerator AttackRoutine(Vector3 target, float seconds)

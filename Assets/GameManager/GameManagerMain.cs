@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameManagerMain : MonoBehaviour
 {
+    public GameObject player;
+    public GameObject victoryCarrot;
     public delegate void ChangeDimension();
     public static event ChangeDimension DimensionOne;
     public static event ChangeDimension DimensionTwo;
@@ -13,7 +15,6 @@ public class GameManagerMain : MonoBehaviour
     public int MaxHourGlasses;
     private int TimeRemaining;
     private int HourGlassRemaining;
-    public GameObject player;
     public GameObject playButton;
     public GameObject gameOver;
     public GameObject gameVictory;
@@ -63,6 +64,8 @@ public class GameManagerMain : MonoBehaviour
         UIGlassesLeft.text = HourGlassRemaining.ToString() + "X";
         HourGlassRemaining++;
         DimensionOne();
+        victoryCarrot.SetActive(false);
+        player.SetActive(true);
         playButton.SetActive(false);
         gameVictory.SetActive(false);
         gameOver.SetActive(false);
@@ -179,6 +182,7 @@ public class GameManagerMain : MonoBehaviour
             UIKey1.SetActive(false);
             UIKey2.SetActive(false);
             UIKey3.SetActive(true);
+            victoryCarrot.SetActive(true);
         }
     }
 
@@ -187,26 +191,30 @@ public class GameManagerMain : MonoBehaviour
         // UIDim1.SetActive(false);
         // UIDim2.SetActive(false);
         // UIDim3.SetActive(false);
+        player.SetActive(false);
         UIKey0.SetActive(true);
         UIKey1.SetActive(false);
         UIKey2.SetActive(false);
         UIKey3.SetActive(false);
         playButton.SetActive(true);
         gameOver.SetActive(false);
+        gameVictory.SetActive(false);
     }
 
     public void GameOver()
     {
         StopCoroutine("TimerCountdown");
         gameOver.SetActive(true);
-        playButton.SetActive(true);
+        // playButton.SetActive(true);
+        audio.Stop();
     }
 
     public void GameVictory()
     {
         StopCoroutine("TimerCountdown");
         gameVictory.SetActive(true);
-        playButton.SetActive(true);
+        // playButton.SetActive(true);
+        audio.Stop();
     }
     private void Awake()
     {

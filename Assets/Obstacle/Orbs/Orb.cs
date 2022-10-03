@@ -24,7 +24,7 @@ public class Orb : MonoBehaviour
     IEnumerator MoveRoutine(Vector3 target, float seconds)
     {
         while (!AtCurrentGoal(target)) {
-            transform.position = Vector3.MoveTowards(transform.position, target, 10 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, target, 4 * Time.deltaTime);
             yield return null;
         }
     }
