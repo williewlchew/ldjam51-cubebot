@@ -16,6 +16,7 @@ public class GameManagerMain : MonoBehaviour
     public GameObject player;
     public GameObject playButton;
     public GameObject gameOver;
+    public GameObject gameVictory;
     public Text UITimer;
     public GameObject UIDim1;
     public GameObject UIDim2;
@@ -57,6 +58,8 @@ public class GameManagerMain : MonoBehaviour
         HourGlassRemaining++;
         DimensionOne();
         playButton.SetActive(false);
+        gameVictory.SetActive(false);
+        gameOver.SetActive(false);
         UIDim1.SetActive(true);
     }
 
@@ -75,8 +78,7 @@ public class GameManagerMain : MonoBehaviour
             }
             TimeRemaining--;
             if (TimeRemaining < 0 && HourGlassRemaining <= 0) {
-                gameOver.SetActive(true);
-                StopCoroutine("TimerCountdown");
+                GameOver();
             } else if (TimeRemaining < 0) {
                 TimeRemaining = 10;
                 CurrentDimension++;
@@ -133,8 +135,12 @@ public class GameManagerMain : MonoBehaviour
         CurrentDimension++;
         if (CurrentDimension > 3) {
             CurrentDimension = 1;
+            DimensionOne();
+        } else if (CurrentDimension == 2) {
+            DimensionTwo();
+        } else {
+            DimensionThree();
         }
-        DimensionSwitch();
         SlowFlag = false;
     }
 
@@ -172,6 +178,19 @@ public class GameManagerMain : MonoBehaviour
         gameOver.SetActive(false);
     }
 
+    public void GameOver()
+    {
+        StopCoroutine("TimerCountdown");
+        gameOver.SetActive(true);
+        playButton.SetActive(true);
+    }
+
+    public void GameVictory()
+    {
+        StopCoroutine("TimerCountdown");
+        gameVictory.SetActive(true);
+        playButton.SetActive(true);
+    }
     private void Awake()
     {
         Pause();
@@ -181,7 +200,6 @@ public class GameManagerMain : MonoBehaviour
     {
         
     }
-
     // Update is called once per frame
     void Update()
     {
