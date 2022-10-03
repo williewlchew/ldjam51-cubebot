@@ -35,6 +35,8 @@ public class GameManagerMain : MonoBehaviour
         DimensionOne += DimensionSwitch;
         DimensionTwo += DimensionSwitch;
         DimensionThree += DimensionSwitch;
+        PlayerController.SlowTime += AbilitySlowTime;
+        PlayerController.SkipDimension += AbilitySkipDimension;
     }
     void OnDisable()
     {
