@@ -138,7 +138,7 @@ public class GameManagerMain : MonoBehaviour
         SlowFlag = false;
     }
 
-    private void KeyAcquired()
+    public void KeyAcquired()
     {
         KeysAcquired++;
         if (KeysAcquired == 1) {
