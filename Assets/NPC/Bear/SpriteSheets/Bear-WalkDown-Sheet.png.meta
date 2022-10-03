@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 8362f2e9513647142b0ac733b683abbc
+guid: d9dc51dfb7e8c4a48b3ba1ed40daca18
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -37,9 +37,9 @@ TextureImporter:
     filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
-    wrapW: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -52,7 +52,7 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
@@ -107,13 +107,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bot_Idle-Sheet_0
+      name: Bear-WalkDown-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,41 +121,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be4f09c8ffdfef040aea38919fba4d6c
-      internalID: -742757943
+      spriteID: 209fe807de5494a40a3b52d9a1027a8d
+      internalID: 1511106613
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bot_Idle-Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fa90a7e0c4ab54c4088ef5e14b4b925b
-      internalID: -287091917
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bot_Idle-Sheet_2
+      name: Bear-WalkDown-Sheet_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,41 +142,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c694a2960ad3da4487dd805cf57d9c8
-      internalID: -1918476034
+      spriteID: 6e89db2148f4e9e4fb4430b1edf98c86
+      internalID: 426500263
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bot_Idle-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: de055e3c231ace14590fa9977f29652f
-      internalID: 93937045
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bot_Idle-Sheet_4
+      name: Bear-WalkDown-Sheet_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,41 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83afa90e17566cd44bb59a4275705348
-      internalID: -921748742
+      spriteID: 2edc3c648f6d2774ba4f96adb60fa594
+      internalID: 545359254
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bot_Idle-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c680e5d70d93fcb4085b3ae08ea5f7aa
-      internalID: 1379298532
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bot_Idle-Sheet_6
+      name: Bear-WalkDown-Sheet_3
       rect:
         serializedVersion: 2
         x: 96
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ec4b1e1723128647a5cf0f57fe864a2
-      internalID: -286678314
+      spriteID: 2747b24742e07bc4cb5b2857f7745a4d
+      internalID: 1788461789
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bot_Idle-Sheet_7
+      name: Bear-WalkDown-Sheet_4
       rect:
         serializedVersion: 2
-        x: 112
+        x: 128
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,8 +205,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 94bfcf0e9700d7244b22381031dc3898
-      internalID: 1684500827
+      spriteID: e2192512048c7cc45a55f6e876008290
+      internalID: 1568567448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear-WalkDown-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 338a63accca9b414da2a7a86348612c7
+      internalID: 567393225
       vertices: []
       indices: 
       edges: []
@@ -277,7 +235,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1d95321b8b05f3b46ac399eab5bc379a
+    spriteID: 9d40d879799f5c34fb695c2e0b718603
     internalID: 0
     vertices: []
     indices: 
@@ -285,14 +243,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bot_Idle-Sheet_1: -287091917
-      Bot_Idle-Sheet_3: 93937045
-      Bot_Idle-Sheet_4: -921748742
-      Bot_Idle-Sheet_7: 1684500827
-      Bot_Idle-Sheet_5: 1379298532
-      Bot_Idle-Sheet_0: -742757943
-      Bot_Idle-Sheet_2: -1918476034
-      Bot_Idle-Sheet_6: -286678314
+      Bear-WalkDown-Sheet_2: 545359254
+      Bear-WalkDown-Sheet_3: 1788461789
+      Bear-WalkDown-Sheet_1: 426500263
+      Bear-WalkDown-Sheet_5: 567393225
+      Bear-WalkDown-Sheet_0: 1511106613
+      Bear-WalkDown-Sheet_4: 1568567448
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

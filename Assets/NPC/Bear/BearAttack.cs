@@ -14,16 +14,15 @@ public class BearAttack : MonoBehaviour
             inProximity = true;
             _bearManager.attacking = true;
             StartCoroutine(AttackRoutine(other.gameObject.transform.position, attackWait));
+            _bearManager._animator.SetInteger("CurrentAnimation", 20);
         }
-        // update visuals for angry
-        // wait
-        // charge
     }
 
     void OnTriggerExit(Collider other)
     {
         inProximity = false;
         _bearManager.attacking = false;
+        _bearManager._animator.SetInteger("CurrentAnimation", 0);
     }
 
     IEnumerator AttackRoutine(Vector3 target, float seconds)

@@ -11,13 +11,13 @@ public class NPCInterface : MonoBehaviour
         switch(phase)
         {
             case(1):
-                StartCoroutine(ChangeColorRoutine(Color.blue, Color.yellow));
+                StartCoroutine(ChangeColorRoutine(Color.red, Color.blue));
                 break;
             case(2):
-                StartCoroutine(ChangeColorRoutine(Color.yellow, Color.red));
+                StartCoroutine(ChangeColorRoutine(Color.blue, Color.yellow));
                 break;
             case(3):
-                StartCoroutine(ChangeColorRoutine(Color.red, Color.blue));
+                StartCoroutine(ChangeColorRoutine(Color.yellow, Color.red));
                 break;
             default:
                 break;
