@@ -16,6 +16,7 @@ public class GameManagerMain : MonoBehaviour
     public GameObject player;
     public GameObject playButton;
     public GameObject gameOver;
+    public GameObject gameVictory;
     public Text UITimer;
     public GameObject UIDim1;
     public GameObject UIDim2;
@@ -28,6 +29,11 @@ public class GameManagerMain : MonoBehaviour
     private int CurrentDimension;
     private bool SlowFlag;
     private int KeysAcquired;
+    public AudioSource audio;
+    public AudioClip MusicChaCha;
+    public AudioClip MusicBNova;
+    public AudioClip MusicDoom;
+
 
     void OnEnable()
     {
@@ -35,6 +41,8 @@ public class GameManagerMain : MonoBehaviour
         DimensionOne += DimensionSwitch;
         DimensionTwo += DimensionSwitch;
         DimensionThree += DimensionSwitch;
+        PlayerController.SlowTime += AbilitySlowTime;
+        PlayerController.SkipDimension += AbilitySkipDimension;
     }
     void OnDisable()
     {
@@ -48,6 +56,7 @@ public class GameManagerMain : MonoBehaviour
     {
         KeysAcquired = 0;
         SlowFlag = false;
+        audio.pitch = 1f;
         TimeRemaining = 10;
         CurrentDimension = 1;
         HourGlassRemaining = MaxHourGlasses;
@@ -55,6 +64,8 @@ public class GameManagerMain : MonoBehaviour
         HourGlassRemaining++;
         DimensionOne();
         playButton.SetActive(false);
+        gameVictory.SetActive(false);
+        gameOver.SetActive(false);
         UIDim1.SetActive(true);
     }
 
@@ -73,8 +84,7 @@ public class GameManagerMain : MonoBehaviour
             }
             TimeRemaining--;
             if (TimeRemaining < 0 && HourGlassRemaining <= 0) {
-                gameOver.SetActive(true);
-                StopCoroutine("TimerCountdown");
+                GameOver();
             } else if (TimeRemaining < 0) {
                 TimeRemaining = 10;
                 CurrentDimension++;
@@ -92,6 +102,8 @@ public class GameManagerMain : MonoBehaviour
 
     private void DimensionSwitch()
     {
+        SlowFlag = false;
+        audio.pitch = 1f;
         HourGlassRemaining--;
         if (HourGlassRemaining < 0) {
             gameOver.SetActive(true);
@@ -105,14 +117,20 @@ public class GameManagerMain : MonoBehaviour
                 UIDim1.SetActive(true);
                 UIDim2.SetActive(false);
                 UIDim3.SetActive(false);
+                audio.clip = MusicChaCha;
+                audio.Play();
             } else if (CurrentDimension == 2) {
                 UIDim1.SetActive(false);
                 UIDim2.SetActive(true);
                 UIDim3.SetActive(false);
+                audio.clip = MusicBNova;
+                audio.Play();
             } else {
                 UIDim1.SetActive(false);
                 UIDim2.SetActive(false);
                 UIDim3.SetActive(true);
+                audio.clip = MusicDoom;
+                audio.Play();
             }
         }
     }
@@ -121,8 +139,10 @@ public class GameManagerMain : MonoBehaviour
     {
         if (SlowFlag) {
             SlowFlag = false;
+            audio.pitch = 1f;
         } else {
             SlowFlag = true;
+            audio.pitch = 0.8f;
         }
     }
 
@@ -131,12 +151,17 @@ public class GameManagerMain : MonoBehaviour
         CurrentDimension++;
         if (CurrentDimension > 3) {
             CurrentDimension = 1;
+            DimensionOne();
+        } else if (CurrentDimension == 2) {
+            DimensionTwo();
+        } else {
+            DimensionThree();
         }
-        DimensionSwitch();
         SlowFlag = false;
+        audio.pitch = 1f;
     }
 
-    private void KeyAcquired()
+    public void KeyAcquired()
     {
         KeysAcquired++;
         if (KeysAcquired == 1) {
@@ -170,6 +195,19 @@ public class GameManagerMain : MonoBehaviour
         gameOver.SetActive(false);
     }
 
+    public void GameOver()
+    {
+        StopCoroutine("TimerCountdown");
+        gameOver.SetActive(true);
+        playButton.SetActive(true);
+    }
+
+    public void GameVictory()
+    {
+        StopCoroutine("TimerCountdown");
+        gameVictory.SetActive(true);
+        playButton.SetActive(true);
+    }
     private void Awake()
     {
         Pause();
@@ -179,7 +217,6 @@ public class GameManagerMain : MonoBehaviour
     {
         
     }
-
     // Update is called once per frame
     void Update()
     {
