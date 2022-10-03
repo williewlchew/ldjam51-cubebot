@@ -1491,7 +1491,7 @@ MonoBehaviour:
   player: {fileID: 53583593516833024}
   playButton: {fileID: 21983164}
   gameOver: {fileID: 1642050829}
-  gameVictory: {fileID: 0}
+  gameVictory: {fileID: 911575862}
   UITimer: {fileID: 1984615490}
   UIDim1: {fileID: 199653562}
   UIDim2: {fileID: 1119463840}
