@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameManagerMain : MonoBehaviour
 {
+    public GameObject player;
+    public GameObject victoryCarrot;
     public delegate void ChangeDimension();
     public static event ChangeDimension DimensionOne;
     public static event ChangeDimension DimensionTwo;
@@ -13,7 +15,6 @@ public class GameManagerMain : MonoBehaviour
     public int MaxHourGlasses;
     private int TimeRemaining;
     private int HourGlassRemaining;
-    public GameObject player;
     public GameObject playButton;
     public GameObject gameOver;
     public GameObject gameVictory;
@@ -25,6 +26,7 @@ public class GameManagerMain : MonoBehaviour
     public GameObject UIKey1;
     public GameObject UIKey2;
     public GameObject UIKey3;
+    public GameObject UIAbilities;
     public Text UIGlassesLeft;
     private int CurrentDimension;
     private bool SlowFlag;
@@ -33,6 +35,8 @@ public class GameManagerMain : MonoBehaviour
     public AudioClip MusicChaCha;
     public AudioClip MusicBNova;
     public AudioClip MusicDoom;
+    private bool SlowmoAvailable;
+    public GameObject UISlowmo;
 
 
     void OnEnable()
@@ -54,6 +58,8 @@ public class GameManagerMain : MonoBehaviour
     }
     public void Play()
     {
+        SlowmoAvailable = true;
+        UISlowmo.SetActive(true);
         KeysAcquired = 0;
         SlowFlag = false;
         audio.pitch = 1f;
@@ -63,12 +69,30 @@ public class GameManagerMain : MonoBehaviour
         UIGlassesLeft.text = HourGlassRemaining.ToString() + "X";
         HourGlassRemaining++;
         DimensionOne();
+        victoryCarrot.SetActive(false);
+        player.SetActive(true);
+        UIAbilities.SetActive(true);
         playButton.SetActive(false);
         gameVictory.SetActive(false);
         gameOver.SetActive(false);
         UIDim1.SetActive(true);
     }
 
+    IEnumerator WaitGameOver()
+    {
+        yield return new WaitForSeconds(0.5f);
+        UIAbilities.SetActive(false);
+        gameOver.SetActive(true);
+        // playButton.SetActive(true);
+        audio.Stop();
+    }
+
+    IEnumerator SlowmoTimer()
+    {
+        yield return new WaitForSeconds(5f);
+        audio.pitch = 1f;
+        SlowFlag = false;
+    }
     IEnumerator TimerCountdown()
     {
         while(true) {
@@ -102,6 +126,9 @@ public class GameManagerMain : MonoBehaviour
 
     private void DimensionSwitch()
     {
+        StopCoroutine("SlowmoTimer");
+        UISlowmo.SetActive(true);
+        SlowmoAvailable = true;
         SlowFlag = false;
         audio.pitch = 1f;
         HourGlassRemaining--;
@@ -141,8 +168,13 @@ public class GameManagerMain : MonoBehaviour
             SlowFlag = false;
             audio.pitch = 1f;
         } else {
-            SlowFlag = true;
-            audio.pitch = 0.8f;
+            if (SlowmoAvailable == true) {
+                StartCoroutine("SlowmoTimer");
+                SlowmoAvailable = false;
+                UISlowmo.SetActive(false);
+                SlowFlag = true;
+                audio.pitch = 0.8f;
+            }
         }
     }
 
@@ -179,6 +211,7 @@ public class GameManagerMain : MonoBehaviour
             UIKey1.SetActive(false);
             UIKey2.SetActive(false);
             UIKey3.SetActive(true);
+            victoryCarrot.SetActive(true);
         }
     }
 
@@ -187,26 +220,28 @@ public class GameManagerMain : MonoBehaviour
         // UIDim1.SetActive(false);
         // UIDim2.SetActive(false);
         // UIDim3.SetActive(false);
+        player.SetActive(false);
         UIKey0.SetActive(true);
         UIKey1.SetActive(false);
         UIKey2.SetActive(false);
         UIKey3.SetActive(false);
         playButton.SetActive(true);
         gameOver.SetActive(false);
+        gameVictory.SetActive(false);
     }
 
     public void GameOver()
     {
         StopCoroutine("TimerCountdown");
-        gameOver.SetActive(true);
-        playButton.SetActive(true);
+        StartCoroutine("WaitGameOver");
     }
 
     public void GameVictory()
     {
         StopCoroutine("TimerCountdown");
         gameVictory.SetActive(true);
-        playButton.SetActive(true);
+        // playButton.SetActive(true);
+        audio.Stop();
     }
     private void Awake()
     {

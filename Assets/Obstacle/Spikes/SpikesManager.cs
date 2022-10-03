@@ -8,10 +8,6 @@ public class SpikesManager : MonoBehaviour
     public NPCInterface _npcInterface;
     public Animator _animator;
 
-    void Start(){
-        ChangeSpikesPhase1();
-    }
-
     /* Phase control */
 
     void OnEnable()

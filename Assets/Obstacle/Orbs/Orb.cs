@@ -6,6 +6,7 @@ public class Orb : MonoBehaviour
 {
     public GameManagerMain gameManagerMain;
     public GameObject blocker;
+    public GameObject blocker2;
     public BoxCollider _boxCollider;
     public Transform target;
 
@@ -13,16 +14,17 @@ public class Orb : MonoBehaviour
     {
         if(other.gameObject.tag == "Player"){
             blocker.SetActive(false);
+            blocker2.SetActive(false);
             gameManagerMain.KeyAcquired();
             _boxCollider.enabled = false;
-            StartCoroutine(MoveRoutine(target.position, 10));
+            StartCoroutine(MoveRoutine(target.position, 5));
         }
     }
 
     IEnumerator MoveRoutine(Vector3 target, float seconds)
     {
         while (!AtCurrentGoal(target)) {
-            transform.position = Vector3.MoveTowards(transform.position, target, 10 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, target, 4 * Time.deltaTime);
             yield return null;
         }
     }

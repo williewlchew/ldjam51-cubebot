@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 2791327547182516597}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2791327546303891608
 MonoBehaviour:
@@ -60,8 +60,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1338105, y: 0, z: 1.8626814}
-  m_Center: {x: -0.024647951, y: 0, z: 0.036972046}
+  m_Size: {x: 1.6026764, y: 0, z: 1.508595}
+  m_Center: {x: -0.054153442, y: 0, z: -0.14007115}
 --- !u!1 &2791327547182516593
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +136,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1179384119, guid: da82ff4c7187666479570fdde667ab56, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
