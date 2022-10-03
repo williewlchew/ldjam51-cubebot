@@ -26,6 +26,7 @@ public class GameManagerMain : MonoBehaviour
     public GameObject UIKey1;
     public GameObject UIKey2;
     public GameObject UIKey3;
+    public GameObject UIAbilities;
     public Text UIGlassesLeft;
     private int CurrentDimension;
     private bool SlowFlag;
@@ -66,6 +67,7 @@ public class GameManagerMain : MonoBehaviour
         DimensionOne();
         victoryCarrot.SetActive(false);
         player.SetActive(true);
+        UIAbilities.SetActive(true);
         playButton.SetActive(false);
         gameVictory.SetActive(false);
         gameOver.SetActive(false);
@@ -204,6 +206,7 @@ public class GameManagerMain : MonoBehaviour
     public void GameOver()
     {
         StopCoroutine("TimerCountdown");
+        UIAbilities.SetActive(false);
         gameOver.SetActive(true);
         // playButton.SetActive(true);
         audio.Stop();
