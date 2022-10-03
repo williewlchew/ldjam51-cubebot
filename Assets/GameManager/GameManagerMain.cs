@@ -35,6 +35,8 @@ public class GameManagerMain : MonoBehaviour
     public AudioClip MusicChaCha;
     public AudioClip MusicBNova;
     public AudioClip MusicDoom;
+    private bool SlowmoAvailable;
+    public GameObject UISlowmo;
 
 
     void OnEnable()
@@ -56,6 +58,8 @@ public class GameManagerMain : MonoBehaviour
     }
     public void Play()
     {
+        SlowmoAvailable = true;
+        UISlowmo.SetActive(true);
         KeysAcquired = 0;
         SlowFlag = false;
         audio.pitch = 1f;
@@ -81,6 +85,13 @@ public class GameManagerMain : MonoBehaviour
         gameOver.SetActive(true);
         // playButton.SetActive(true);
         audio.Stop();
+    }
+
+    IEnumerator SlowmoTimer()
+    {
+        yield return new WaitForSeconds(5f);
+        audio.pitch = 1f;
+        SlowFlag = false;
     }
     IEnumerator TimerCountdown()
     {
@@ -115,6 +126,9 @@ public class GameManagerMain : MonoBehaviour
 
     private void DimensionSwitch()
     {
+        StopCoroutine("SlowmoTimer");
+        UISlowmo.SetActive(true);
+        SlowmoAvailable = true;
         SlowFlag = false;
         audio.pitch = 1f;
         HourGlassRemaining--;
@@ -154,8 +168,13 @@ public class GameManagerMain : MonoBehaviour
             SlowFlag = false;
             audio.pitch = 1f;
         } else {
-            SlowFlag = true;
-            audio.pitch = 0.8f;
+            if (SlowmoAvailable == true) {
+                StartCoroutine("SlowmoTimer");
+                SlowmoAvailable = false;
+                UISlowmo.SetActive(false);
+                SlowFlag = true;
+                audio.pitch = 0.8f;
+            }
         }
     }
 
