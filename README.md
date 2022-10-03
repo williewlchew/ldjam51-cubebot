@@ -1,7 +1,7 @@
 # RunCubeungus
 
 ![Unity](https://img.shields.io/badge/Unity-2022-green)
-![CSharp](https://img.shields.io/badge/C#-7-green)
+![CSharp](https://img.shields.io/badge/C%23-7-green)
 
 ## Description
 
