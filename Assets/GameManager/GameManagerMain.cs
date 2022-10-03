@@ -74,6 +74,14 @@ public class GameManagerMain : MonoBehaviour
         UIDim1.SetActive(true);
     }
 
+    IEnumerator WaitGameOver()
+    {
+        yield return new WaitForSeconds(0.5f);
+        UIAbilities.SetActive(false);
+        gameOver.SetActive(true);
+        // playButton.SetActive(true);
+        audio.Stop();
+    }
     IEnumerator TimerCountdown()
     {
         while(true) {
@@ -206,10 +214,7 @@ public class GameManagerMain : MonoBehaviour
     public void GameOver()
     {
         StopCoroutine("TimerCountdown");
-        UIAbilities.SetActive(false);
-        gameOver.SetActive(true);
-        // playButton.SetActive(true);
-        audio.Stop();
+        StartCoroutine("WaitGameOver");
     }
 
     public void GameVictory()
