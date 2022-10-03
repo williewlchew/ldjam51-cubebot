@@ -17,7 +17,7 @@ public class Orb : MonoBehaviour
             blocker2.SetActive(false);
             gameManagerMain.KeyAcquired();
             _boxCollider.enabled = false;
-            StartCoroutine(MoveRoutine(target.position, 10));
+            StartCoroutine(MoveRoutine(target.position, 5));
         }
     }
 
