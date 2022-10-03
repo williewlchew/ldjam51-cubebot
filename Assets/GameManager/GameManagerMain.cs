@@ -56,6 +56,7 @@ public class GameManagerMain : MonoBehaviour
     {
         KeysAcquired = 0;
         SlowFlag = false;
+        audio.pitch = 1f;
         TimeRemaining = 10;
         CurrentDimension = 1;
         HourGlassRemaining = MaxHourGlasses;
@@ -101,6 +102,7 @@ public class GameManagerMain : MonoBehaviour
 
     private void DimensionSwitch()
     {
+        SlowFlag = false;
         HourGlassRemaining--;
         if (HourGlassRemaining < 0) {
             gameOver.SetActive(true);
@@ -136,8 +138,10 @@ public class GameManagerMain : MonoBehaviour
     {
         if (SlowFlag) {
             SlowFlag = false;
+            audio.pitch = 1f;
         } else {
             SlowFlag = true;
+            audio.pitch = 0.8f;
         }
     }
 
@@ -153,6 +157,7 @@ public class GameManagerMain : MonoBehaviour
             DimensionThree();
         }
         SlowFlag = false;
+        audio.pitch = 1f;
     }
 
     private void KeyAcquired()
