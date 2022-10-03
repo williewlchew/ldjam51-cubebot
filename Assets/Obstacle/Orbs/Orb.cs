@@ -6,6 +6,7 @@ public class Orb : MonoBehaviour
 {
     public GameManagerMain gameManagerMain;
     public GameObject blocker;
+    public GameObject blocker2;
     public BoxCollider _boxCollider;
     public Transform target;
 
@@ -13,6 +14,7 @@ public class Orb : MonoBehaviour
     {
         if(other.gameObject.tag == "Player"){
             blocker.SetActive(false);
+            blocker2.SetActive(false);
             gameManagerMain.KeyAcquired();
             _boxCollider.enabled = false;
             StartCoroutine(MoveRoutine(target.position, 10));
