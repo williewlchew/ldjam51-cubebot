@@ -129,6 +129,7 @@ public class BearManager : MonoBehaviour
     {
         _animator.SetInteger("CurrentAnimation", 21);
         StartCoroutine(AttackRoutine(target));
+        _animator.SetInteger("CurrentAnimation", 0);
     }
 
     IEnumerator AttackRoutine(Vector3 target)
