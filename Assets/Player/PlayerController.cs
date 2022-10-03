@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public delegate void PlayerAbility();
+    public static event PlayerAbility SlowTime;
+    public static event PlayerAbility SkipDimension;
+
     public float speed;
     public Animator animator;
     
@@ -27,13 +31,23 @@ public class PlayerController : MonoBehaviour
         AnimateWithInput();
     }
 
-    /* PHYSICS */
+    /* INPUT */
 
     private void ProcessInputs()
     {
         normalizedInputs = (transform.right * Input.GetAxis("Horizontal")) +
             (transform.forward * Input.GetAxis("Vertical"));
         normalizedInputs = Vector3.Normalize(normalizedInputs);
+
+        if (Input.GetButtonDown("Fire1")){
+            SlowTime();
+        }
+
+        if (Input.GetButtonDown("Fire2")){
+            SkipDimension();
+        }
+
+
     }
 
     /* PHYSICS */
