@@ -160,7 +160,7 @@ public class GameManagerMain : MonoBehaviour
         audio.pitch = 1f;
     }
 
-    private void KeyAcquired()
+    public void KeyAcquired()
     {
         KeysAcquired++;
         if (KeysAcquired == 1) {
