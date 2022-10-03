@@ -18,6 +18,7 @@ public class BearManager : MonoBehaviour
     void Start() 
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        _animator.SetInteger("CurrentAnimation", 0);
     }
 
     void Update () 
