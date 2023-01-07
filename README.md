@@ -1,4 +1,4 @@
-# RunCubeungus (Created durning Ludum Dare Jam 51)
+# RunCubeungus (Created during Ludum Dare Jam 51)
 
 ![Unity](https://img.shields.io/badge/Unity-2022-blue)
 ![CSharp](https://img.shields.io/badge/C%23-7-green)
